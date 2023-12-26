@@ -89,6 +89,8 @@ def sortedSquaredArray(array):
 # 4) TOURNAMENT WINNER
 # O(n) time and O(k) space
 HOME_TEAM_WON = 1
+
+
 def tournamentWinner(competitions, results):
     bestTeam = ""
     scores = {bestTeam: 0}
@@ -148,3 +150,8 @@ def transposeMatrix(matrix):
         transposedMatrix.append(newRow)
 
     return transposedMatrix
+
+# 7) FIND THE CLOSEST VALUE IN BST (Binary Search Tree)
+
+
+# 8) BRANCH SUMS (Binary Search Tree)
