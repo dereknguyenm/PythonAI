@@ -151,7 +151,50 @@ def transposeMatrix(matrix):
 
     return transposedMatrix
 
-# 7) FIND THE CLOSEST VALUE IN BST (Binary Search Tree)
 
+# 7) FIND THE CLOSEST VALUE IN BST (Binary Search Tree)
+# Solution 1 Recursively
+# Runtime: O(logn) but worst case is 0(n) because if only one branch
+# Space complexity: same as runtime since adding frames on call stack everytime we call findClosest function
+# Or O(depth) of tree for space complexity
+def findClosestValueInBst(tree, target):
+    return findClosestValueInBstHelper(tree, target, float("inf"))
+
+
+def findClosestValueInBstHelper(tree, target, closest):
+    if tree is None:
+        return closest
+    if abs(target - closest) > abs(target - tree.value):
+        closest = tree.value
+    if target < tree.value:
+        findClosestValueInBstHelper(tree.left, target, closest)
+    elif target > tree.value:
+        findClosestValueInBstHelper(tree.right, target, closest)
+    else:
+        return closest
+
+
+# This is the class of a BST
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+# Solution 2 (Iteratively)
+# Runtime: 0(logn)
+# Space Complexity: O(1)
+def findClosestValueInBst(tree, target):
+    closest = tree.value
+    while tree is not None:
+        if abs(target - closest) > abs(target - tree.value):
+            closest = tree.value
+        if closest == target:
+            return target
+        if target > closest:
+            tree = tree.left
+        else:  # target < closest
+            tree = tree.right
+    return closest
 
 # 8) BRANCH SUMS (Binary Search Tree)
